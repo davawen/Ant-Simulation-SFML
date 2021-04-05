@@ -1,0 +1,24 @@
+﻿  Ant.cpp
+C:\Users\Awen Arthaud\source\repos\SFMLTest\SFMLTest\Constants.h(3,42): warning C4305: 'initialisation' : troncation de 'double' à 'const float'
+  Cell.cpp
+  Pheromone.cpp
+  main.cpp
+C:\Users\Awen Arthaud\source\repos\SFMLTest\SFMLTest\Constants.h(3,42): warning C4305: 'initialisation' : troncation de 'double' à 'const float'
+C:\Users\Awen Arthaud\source\repos\SFMLTest\SFMLTest\main.cpp(16,56): warning C4244: 'argument' : conversion de 'const float' en 'unsigned int', perte possible de données
+C:\Users\Awen Arthaud\source\repos\SFMLTest\SFMLTest\main.cpp(16,43): warning C4244: 'argument' : conversion de 'const float' en 'unsigned int', perte possible de données
+C:\Users\Awen Arthaud\source\repos\SFMLTest\SFMLTest\main.cpp(56,34): warning C4244: 'initialisation' : conversion de 'float' en 'int', perte possible de données
+C:\Users\Awen Arthaud\source\repos\SFMLTest\SFMLTest\main.cpp(56,27): warning C4244: 'initialisation' : conversion de 'float' en 'const int', perte possible de données
+C:\Users\Awen Arthaud\source\repos\SFMLTest\SFMLTest\main.cpp(57,35): warning C4244: 'initialisation' : conversion de 'float' en 'int', perte possible de données
+C:\Users\Awen Arthaud\source\repos\SFMLTest\SFMLTest\main.cpp(57,28): warning C4244: 'initialisation' : conversion de 'float' en 'const int', perte possible de données
+C:\Users\Awen Arthaud\source\repos\SFMLTest\SFMLTest\main.cpp(94,134): warning C4244: 'argument' : conversion de 'double' en 'T', perte possible de données
+          with
+          [
+              T=float
+          ]
+C:\Users\Awen Arthaud\source\repos\SFMLTest\SFMLTest\main.cpp(94,85): warning C4244: 'argument' : conversion de 'double' en 'T', perte possible de données
+          with
+          [
+              T=float
+          ]
+  Génération de code en cours...
+  SFMLTest.vcxproj -> C:\Users\Awen Arthaud\source\repos\SFMLTest\Debug\SFMLTest.exe
