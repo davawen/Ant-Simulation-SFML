@@ -2,43 +2,35 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include <list>
+#include <time.h>
 
-#include "functions.h"
-#include "Ant.h"
-#include "Pheromone.h"
+#include "Constants.hpp"
+#include "functions.hpp"
 
-#include "Constants.h"
+#include "Ant.hpp"
+#include "Pheromone.hpp"
+#include "Nest.hpp"
+
+#include "Cell.hpp"
+#include "Canvas.hpp"
+#include "Food.hpp"
 
 int main()
 {
+    srand(time(NULL));
+
     #pragma region Setup
 
-    sf::RenderWindow window(sf::VideoMode(screenWidth, screenHeight), "SFML", sf::Style::Close | sf::Style::Titlebar);
+    sf::RenderWindow window(sf::VideoMode(screenWidth, screenHeight), "SFML", sf::Style::Close | sf::Style::Titlebar | sf::Style::Resize);
     sf::Clock deltaClock;
 
     sf::View view(sf::Vector2f(screenWidth / 2, screenHeight / 2), sf::Vector2f(screenWidth, screenHeight));
 
+    float aspectRatio = screenWidth / screenHeight;
+
     window.setView(view);
 
     #pragma endregion
-    #pragma region Ant Stuff
-
-    std::vector<Ant> ants(300);
-    std::vector<Pheromone *> pheromones;
-
-    float evaporateAmount = .8f;
-
-    for(auto &ant : ants)
-    {
-        ant = Ant(sf::Vector2f(randRange(0.f, screenWidth), randRange(0.f, screenHeight)), randRange(0.f, 2 * PI));
-
-        ant.shape.setFillColor(sf::Color::White);
-    }
-
-    #pragma endregion
-
-    float mouseXStart = 0;
-    float mouseYStart = 0;
 
     #pragma region Border
 
@@ -53,21 +45,58 @@ int main()
 
     #pragma region Cell division
 
-    const int canvasWidth = floor(screenWidth / 20);
-    const int canvasHeigth = floor(screenHeight / 20);
+    const int cellWidth = 50;
+    const int cellHeight = 50;
 
-    std::vector<std::vector<Pheromone>> canvas;
+    const int canvasWidth = floor(screenWidth / cellWidth)+1;
+    const int canvasHeigth = floor(screenHeight / cellHeight)+1;
+    const int canvasLength = canvasWidth * canvasHeigth;
+
+    Canvas canvas(canvasWidth, canvasHeigth, cellWidth, cellHeight);
 
     #pragma endregion
 
+    #pragma region Populate with food
+    
+    for(int i = 0; i < 6; i++)
+    {
+        int foodIndex = randRange(0, canvasLength-1);
+        int foodAmount = randRange(5, 20);
 
-    sf::Shader shader;
+        for(int j = 0; j < foodAmount; j++)
+        {
+            canvas[foodIndex]->food.push_back(
+                new Food(canvas.getPosition(foodIndex, randRange(0.f, static_cast<float>(cellWidth)), randRange(0.f, static_cast<float>(cellHeight))))
+            );
+        }
+    }
 
-    //if(!shader.loadFromFile())
+    #pragma endregion
+
+    Nest nest(sf::Vector2f(screenWidth/2, screenHeight/2), 1000);
+
+    //sf::Shader shader;
+    //
+    //if(!shader.loadFromFile("shader.frag", "shader.vert"))
+    //{
+    //    //Error...
+    //}
+
+    /*try
+    {
+        if(!shader.loadFromFile("shader.frag", "shader.vert")) throw "Unable to load shader";
+    }
+    catch(const std::exception e)
+    {
+        std::cout << e.what();
+    }*/
 
     while(window.isOpen())
     {
         float dt = (deltaClock.restart()).asSeconds();
+
+        sf::Vector2f mouseRoomPos = (view.getCenter() - view.getSize() / 2.f) +
+                                    cWiseMultiplication(sf::Vector2f(sf::Mouse::getPosition(window)), cWiseDivision(view.getSize(), sf::Vector2f(screenWidth, screenHeight)));
 
         #pragma region Events
         
@@ -79,21 +108,21 @@ int main()
                 case sf::Event::Closed:
                     window.close();
                     break;
-                case sf::Event::MouseButtonPressed:
+                /*case sf::Event::MouseButtonPressed:
                     if(evnt.mouseButton.button == sf::Mouse::Middle)
                     {
-                        sf::Vector2f __viewPos = view.getCenter();
-
-                        mouseXStart = evnt.mouseButton.x + __viewPos.x;
-                        mouseYStart = evnt.mouseButton.y + __viewPos.y;
+                        mouseStart = mouseRoomPos;
+                        viewPosStart = view.getCenter();
                     }
-                    break;
+                    break;*/
                 case sf::Event::MouseWheelMoved:
-                    //_x + (_w - (_w*zoom))*ox, _y + (_h - (_h*zoom))*oy
-                    sf::Vector2i __mousePosRelative = sf::Mouse::getPosition(window);
-                    sf::Vector2f __origin((float)__mousePosRelative.x / screenWidth - .5, (float)__mousePosRelative.y / screenHeight - .5);
+                {
 
-                    float __zoomAmount = 1 - (float)evnt.mouseWheel.delta * .05f;
+                                    //_x + (_w - (_w*zoom))*ox, _y + (_h - (_h*zoom))*oy
+                    sf::Vector2i __mousePosRelative = sf::Mouse::getPosition(window);
+                    sf::Vector2f __origin(static_cast<float>(__mousePosRelative.x) / screenWidth - .5, static_cast<float>(__mousePosRelative.y) / screenHeight - .5);
+
+                    float __zoomAmount = 1 - static_cast<float>(evnt.mouseWheel.delta) * .05f;
 
                     sf::Vector2f __viewSize = view.getSize();
 
@@ -102,67 +131,43 @@ int main()
                     view.zoom(__zoomAmount);
 
                     window.setView(view);
+                }
+                    break;
+                case sf::Event::Resized:
+                {
+                    view.setSize(aspectRatio * evnt.size.height, evnt.size.height);
+
+                    window.setView(view);
+                }
+
                     break;
                     /*case sf::Event::TextEntered:
                         if(evnt.text.unicode < 128)
                         {
                             printf("%c", evnt.text.unicode);
                         }
-
+                    
                         break;*/
             }
         }
-        if(sf::Mouse::isButtonPressed(sf::Mouse::Middle))
+        /*if(sf::Mouse::isButtonPressed(sf::Mouse::Middle))
         {
-            sf::Vector2i __mousePos = sf::Mouse::getPosition(window);
-
-            view.setCenter(sf::Vector2f(mouseXStart - (float)__mousePos.x, mouseYStart - (float)__mousePos.y));
+            view.setCenter(view.getCenter() - mouseRoomPos - mouseStart);
 
             window.setView(view);
-        }
+        }*/
 
         #pragma endregion
 
-        if(!pheromones.empty())
-        {
-            std::vector<int> deletePheromones;
-
-            int __it = 0;
-            for(auto &pheromone : pheromones)
-            {
-                if(pheromone->evaporate(evaporateAmount, dt))
-                {
-                    deletePheromones.push_back(__it);
-                }
-                else
-                {
-                    window.draw(pheromone->shape);
-                }
-
-                __it++;
-            }
-
-            for(auto &p : deletePheromones)
-            {
-                pheromones.erase(pheromones.begin() + p);
-            }
-        }
-
-        for(auto &ant : ants)
-        {
-            ant.update(dt);
-            ant.sense(pheromones, dt);
-            ant.trail(pheromones, dt);
-
-            window.draw(ant.shape);
-        }
+        canvas.update(window, dt);
+        nest.update(canvas, window, dt);
 
         window.draw(border);
 
         window.display();
         window.clear();
 
-        printf("%f\n", 1. / dt);
+        printf("%f FPS\n", 1. / dt);
     }
 
     return 0;

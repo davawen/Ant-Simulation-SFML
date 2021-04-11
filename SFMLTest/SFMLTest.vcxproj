@@ -88,12 +88,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\Awen Arthaud\Documents\SFML\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\SFML\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ShowIncludes>true</ShowIncludes>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\Awen Arthaud\Documents\SFML\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\SFML\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>sfml-system-d.lib;sfml-graphics-d.lib;sfml-audio-d.lib;sfml-network-d.lib;sfml-window-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -105,14 +106,15 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\Awen Arthaud\Documents\SFML\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\SFML\include</AdditionalIncludeDirectories>
+      <ShowIncludes>true</ShowIncludes>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\Awen Arthaud\Documents\SFML\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\SFML\lib</AdditionalLibraryDirectories>
       <AdditionalDependencies>sfml-system.lib;sfml-graphics.lib;sfml-audio.lib;sfml-network.lib;sfml-window.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -146,7 +148,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Ant.cpp" />
+    <ClCompile Include="Canvas.cpp" />
     <ClCompile Include="Cell.cpp" />
+    <ClCompile Include="Food.cpp" />
+    <ClCompile Include="Nest.cpp" />
     <ClCompile Include="Pheromone.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="functions.cpp" />
@@ -156,11 +161,16 @@
     <None Include="shader.vert" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Ant.h" />
-    <ClInclude Include="Cell.h" />
-    <ClInclude Include="functions.h" />
-    <ClInclude Include="Constants.h" />
-    <ClInclude Include="Pheromone.h" />
+    <ClInclude Include="Ant.fwd.hpp" />
+    <ClInclude Include="Ant.hpp" />
+    <ClInclude Include="Canvas.hpp" />
+    <ClInclude Include="Cell.hpp" />
+    <ClInclude Include="Food.hpp" />
+    <ClInclude Include="functions.hpp" />
+    <ClInclude Include="Constants.hpp" />
+    <ClInclude Include="Nest.fwd.hpp" />
+    <ClInclude Include="Nest.hpp" />
+    <ClInclude Include="Pheromone.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="SFMLTest.rc" />

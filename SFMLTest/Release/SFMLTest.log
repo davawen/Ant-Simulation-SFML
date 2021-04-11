@@ -1,0 +1,42 @@
+﻿  Ant.cpp
+C:\Users\artha\source\repos\davawen\Ant-Simulation-SFML\SFMLTest\Constants.hpp(3,42): warning C4305: 'initializing': truncation from 'double' to 'const float'
+  Cell.cpp
+  Pheromone.cpp
+  main.cpp
+C:\Users\artha\source\repos\davawen\Ant-Simulation-SFML\SFMLTest\Constants.hpp(3,42): warning C4305: 'initializing': truncation from 'double' to 'const float'
+C:\Users\artha\source\repos\davawen\Ant-Simulation-SFML\SFMLTest\main.cpp(17,56): warning C4244: 'argument': conversion from 'const float' to 'unsigned int', possible loss of data
+C:\Users\artha\source\repos\davawen\Ant-Simulation-SFML\SFMLTest\main.cpp(17,43): warning C4244: 'argument': conversion from 'const float' to 'unsigned int', possible loss of data
+C:\Users\artha\source\repos\davawen\Ant-Simulation-SFML\SFMLTest\main.cpp(58,59): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\artha\source\repos\davawen\Ant-Simulation-SFML\SFMLTest\main.cpp(58,27): warning C4244: 'initializing': conversion from 'float' to 'const int', possible loss of data
+C:\Users\artha\source\repos\davawen\Ant-Simulation-SFML\SFMLTest\main.cpp(59,62): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\artha\source\repos\davawen\Ant-Simulation-SFML\SFMLTest\main.cpp(59,28): warning C4244: 'initializing': conversion from 'float' to 'const int', possible loss of data
+C:\Users\artha\source\repos\davawen\Ant-Simulation-SFML\SFMLTest\main.cpp(69,63): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\artha\source\repos\davawen\Ant-Simulation-SFML\SFMLTest\main.cpp(69,48): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\artha\source\repos\davawen\Ant-Simulation-SFML\SFMLTest\main.cpp(117,160): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\artha\source\repos\davawen\Ant-Simulation-SFML\SFMLTest\main.cpp(117,98): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\artha\source\repos\davawen\Ant-Simulation-SFML\SFMLTest\main.cpp(171,33): warning C4244: 'argument': conversion from 'float' to 'const unsigned int', possible loss of data
+C:\Users\artha\source\repos\davawen\Ant-Simulation-SFML\SFMLTest\main.cpp(171,59): warning C4244: 'argument': conversion from 'float' to 'const unsigned int', possible loss of data
+C:\Users\artha\source\repos\davawen\Ant-Simulation-SFML\SFMLTest\main.cpp(191,35): warning C4244: 'argument': conversion from 'float' to 'const unsigned int', possible loss of data
+C:\Users\artha\source\repos\davawen\Ant-Simulation-SFML\SFMLTest\main.cpp(191,61): warning C4244: 'argument': conversion from 'float' to 'const unsigned int', possible loss of data
+  functions.cpp
+  Generating code
+  Previous IPDB not found, fall back to full compilation.
+  All 346 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  SFMLTest.vcxproj -> C:\Users\artha\source\repos\davawen\Ant-Simulation-SFML\Release\SFMLTest.exe

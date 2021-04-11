@@ -13,25 +13,46 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Fichiers sources\Classes">
-      <UniqueIdentifier>{88e7ff13-a065-4422-a6eb-86dbba20a46a}</UniqueIdentifier>
+    <Filter Include="Fichiers d%27en-tête\Grid">
+      <UniqueIdentifier>{ebe25aa8-f236-4f9c-8369-53b008e35c88}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Grid">
+      <UniqueIdentifier>{18504cd6-a3c2-4765-b21a-39ce8a5d41e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Ants">
+      <UniqueIdentifier>{1dcce253-b3b1-44c8-8fa3-2972a2076be3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Ants">
+      <UniqueIdentifier>{c52b6a60-0f44-4e3a-b66b-540670556669}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Ants\Forward">
+      <UniqueIdentifier>{bd9f7831-ab85-46f3-888b-328ec7d2879b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Ant.cpp">
-      <Filter>Fichiers sources\Classes</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="Pheromone.cpp">
-      <Filter>Fichiers sources\Classes</Filter>
-    </ClCompile>
-    <ClCompile Include="Cell.cpp">
-      <Filter>Fichiers sources\Classes</Filter>
-    </ClCompile>
     <ClCompile Include="functions.cpp">
       <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Cell.cpp">
+      <Filter>Fichiers sources\Grid</Filter>
+    </ClCompile>
+    <ClCompile Include="Canvas.cpp">
+      <Filter>Fichiers sources\Grid</Filter>
+    </ClCompile>
+    <ClCompile Include="Ant.cpp">
+      <Filter>Fichiers sources\Ants</Filter>
+    </ClCompile>
+    <ClCompile Include="Nest.cpp">
+      <Filter>Fichiers sources\Ants</Filter>
+    </ClCompile>
+    <ClCompile Include="Pheromone.cpp">
+      <Filter>Fichiers sources\Ants</Filter>
+    </ClCompile>
+    <ClCompile Include="Food.cpp">
+      <Filter>Fichiers sources\Grid</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -39,20 +60,35 @@
     <None Include="shader.frag" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Ant.h">
+    <ClInclude Include="functions.hpp">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="Pheromone.h">
+    <ClInclude Include="Constants.hpp">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="functions.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+    <ClInclude Include="Cell.hpp">
+      <Filter>Fichiers d%27en-tête\Grid</Filter>
     </ClInclude>
-    <ClInclude Include="Constants.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+    <ClInclude Include="Canvas.hpp">
+      <Filter>Fichiers d%27en-tête\Grid</Filter>
     </ClInclude>
-    <ClInclude Include="Cell.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+    <ClInclude Include="Nest.hpp">
+      <Filter>Fichiers d%27en-tête\Ants</Filter>
+    </ClInclude>
+    <ClInclude Include="Ant.hpp">
+      <Filter>Fichiers d%27en-tête\Ants</Filter>
+    </ClInclude>
+    <ClInclude Include="Pheromone.hpp">
+      <Filter>Fichiers d%27en-tête\Ants</Filter>
+    </ClInclude>
+    <ClInclude Include="Food.hpp">
+      <Filter>Fichiers d%27en-tête\Grid</Filter>
+    </ClInclude>
+    <ClInclude Include="Ant.fwd.hpp">
+      <Filter>Fichiers d%27en-tête\Ants\Forward</Filter>
+    </ClInclude>
+    <ClInclude Include="Nest.fwd.hpp">
+      <Filter>Fichiers d%27en-tête\Ants\Forward</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
